@@ -86,7 +86,10 @@ export default class LegendControl implements IControl {
   private _toggleButton(layerId: string, layerKey: string) {
     const { onToggle = this._options.onToggle } = this._options.layers[layerKey] || {};
     const visibility = this._map?.getLayoutProperty(layerId, 'visibility') || 'visible';
-    const button = createElement('button', { classes: ['toggler', `toggler--${visibility}`] });
+    const buttonProps = {
+      'aria-label': 'Toggle data layer on map'
+    };
+    const button = createElement('button',{ ...buttonProps, classes: ['toggler', `toggler--${visibility}`] });
     button.addEventListener('click', event => {
       event.preventDefault();
       const visible = visibility === 'none' ? 'visible' : 'none';
