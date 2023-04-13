@@ -11,7 +11,7 @@
   box-shadow: var(--map-legend-shadow);
   width: auto;
   position: relative;
-  overflow: auto;
+  overflow: scroll;
   max-width: var(--map-legend-maxwidth);
   max-height: var(--map-legend-maxheight);
 
