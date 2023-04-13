@@ -39,7 +39,7 @@
 
     &::-webkit-details-marker { display: none; }
 
-    .toggler {
+    .toggler[aria-label="Toggle data layer on map"] {
       color: inherit;
       margin-left: auto;
       width: var(--map-legend-title-size);
