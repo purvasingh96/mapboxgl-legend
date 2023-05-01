@@ -22,7 +22,7 @@ export default (expression: Expression, layer: Layer, map: Map, options: LayerOp
       const ctx = canvas.getContext('2d');
       const imageData = new ImageData(Uint8ClampedArray.from(data), width, height);
       ctx?.putImageData(imageData, (size - width) / 2, (size - height) / 2);
-      return createElement('li', {
+      const elem = createElement('li', {
         events: options.highlight ? events(value) : {},
         content: [
           createElement('img', {
@@ -32,6 +32,8 @@ export default (expression: Expression, layer: Layer, map: Map, options: LayerOp
           label,
         ],
       });
+      elem.setAttribute('aria-label', label);
+      return elem;
     }),
   });
 };

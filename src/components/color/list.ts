@@ -9,13 +9,16 @@ export default (expression: Expression, layer: Layer, map: Map, options: LayerOp
   const { events } = highlighter(expression, layer, map);
   return createElement('ul', {
     classes: ['list', 'list--color', `list--${options.highlight ? 'highlight' : ''}`],
-    content: stops.map(([value, color]) => {
+    content: stops.map(([value, color], index) => {
       const content = serializeLabel(value, layer.metadata);
-      return content && createElement('li', {
+      const elem= createElement('li', {
         styles: { '--color': color },
+        
         events: options.highlight ? events(value) : {},
         content,
       });
+      elem.setAttribute('aria-label', 'shade '+index);
+      return content && elem
     }),
   });
 };
